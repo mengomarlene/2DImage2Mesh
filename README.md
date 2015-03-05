@@ -1,8 +1,8 @@
 # 2DImage2Mesh
 Procedure to CREATE A 2D QUADRAQNGULAR MESH FROM AN IMAGE USING SCANIP AND ABAQUS ONLY
 ## INSTRUCTIONS
-In scanIP
----------
+### In scanIP
+
 1/ import your 2D image twice (this creates a virtual stack)
 
 2/ create masks as if it was 3D (use option "on all slices" when possible!!)
@@ -18,8 +18,7 @@ In scanIP
 
 7/ export the results in a inp file
 
-In abaqus cae
--------------
+### In abaqus cae
 8/ make sure your working directory includes the file 'sipShell2Abq2D.py', i.e. this file (or make it available in your python path)
 
 9/ import your inp file as a model
@@ -30,13 +29,14 @@ In abaqus cae
 	import sipShell2Abq2D
 	sipShell2Abq2D.shellTo2DGeo(myModel)
 
-## What abaqus does:
+## What abaqus does
+abaqus will look in your scanIP mesh for all the external edges (not only globally external but also those at contact surfaces)
 
-	abaqus will look in your scanIP mesh for all the external edges (not only globally external but also those at contact surfaces)
-	it will rebuild a geometry based on those edges, keeping them as they are
-	the mesh abaqus produces seeds those edges, the coarser you can get is thus the size of your scanIp mesh
-	all the node set and contact surfaces produced by scanIP are exported both in part Sets and part Surfaces
+it will rebuild a geometry based on those edges, keeping them as they are
 
-## KNOWN ISSUE: 
+the mesh abaqus produces seeds those edges, the coarser you can get is thus the size of your scanIp mesh
 
+all the node set and contact surfaces produced by scanIP are exported both in part Sets and part Surfaces
+
+## known issue 
 if the scanIP mesh used is relatively fine, abaqus won't be able to re-mesh it!! --> use an initial mesh as coarse as you can
