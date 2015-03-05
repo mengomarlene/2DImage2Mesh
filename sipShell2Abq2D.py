@@ -1,6 +1,6 @@
 '''
 Prodcedure to CREATE A 2D MESH FROM AN IMAGE USING SCANIP AND ABAQUS ONLY
-
+----------------------------------------------
 INSTRUCTIONS (there is no need to modify this file at all): 
 
 In scanIP
@@ -8,16 +8,17 @@ In scanIP
 1/ import your 2D image twice (this creates a virtual stack)
 2/ create masks as if it was 3D (use option "on all slices" when possible!!)
 3/ mesh your data as coarse as you can without changing the geometry (if needed up-sample the z-direction and down-sample the in-plane directions)
-4/ set your masks as non-exportable
-5/ in the mesh options, export shells of all your masks with zMin (i.e. the plane surface) - you have to export contact pairs between masks - you can export other node sets
+4/ set all your masks as non-exportable
+5/ in the mesh options, export shells of all your useful masks with zMin (i.e. the plane surface, not the background)
+6/ in the mesh options, export contact surfaces between useful masks (and only the useful ones!!)
 !! scanIP 6 - DO NOT import contact pairs as contact but as node sets !!
-6/ export the results in a inp file
+7/ export the results in a inp file
 
 In abaqus cae
 -------------
-7/ make sure your working directory includes the file 'sipShell2Abq2D.py', i.e. this file (or make it available in your python path)
-8/ import your inp file as a model
-9/ in the abaqus command line type (with nameOfYourModel the name of your model):
+8/ make sure your working directory includes the file 'sipShell2Abq2D.py', i.e. this file (or make it available in your python path)
+9/ import your inp file as a model
+10/ in the abaqus command line type (with nameOfYourModel the name of your model):
 
 	myModel = mdb.models['nameOfYourModel']
 	import sipShell2Abq2D
@@ -28,16 +29,18 @@ What abaqus does:
 	it will rebuild a geometry based on those edges, keeping them as they are
 	the mesh abaqus produces seeds those edges, the coarser you can get is thus the size of your scanIp mesh
     all the node set and contact surfaces produced by scanIP are exported both in part Sets and part Surfaces
-
+----------------------------------------------
 KNOWN ISSUE:
 if the scanIP mesh initially used is relatively fine, abaqus won't be able to re-mesh it!! --> use an initial mesh as coarse as you can
-
+----------------------------------------------
 IMPROVEMENTS THAT COULD BE DONE:
 - parameterise the element type
+- parameterise the seed size of the new mesh - done in version 1.1
 
 VERSIONS:
 VERSION 1.1 - MENMMEN: seed size parametrised
 VERSION 1.0 - MENMMEN: initial version
+----------------------------------------------
 '''
 
 ## default abaqus modules
@@ -106,7 +109,6 @@ def shellTo2DGeo(myModel,seedSize=0.5):
             nodeCoord = tuple(node.coordinates for node in myAssembly.sets[setName].nodes)
             #find the part edges at those coord
             myEdgeList = list(part.edges.findAt((nC,)) for nC in nodeCoord)
-            #
             #for what ever reason when parts.edges[0] should be in the list it is not...
             #so here is a long way to add it if needed...
             #1/ build a list of all vertices in the edge list
