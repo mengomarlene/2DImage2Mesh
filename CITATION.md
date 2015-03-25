@@ -1,4 +1,4 @@
-To reference opti4Abq in publications, please cite both of the following:
+To reference 2DImage2Mesh in publications, please cite both of the following:
 
 Mengoni M., Luxmoore B.J., Jones A.C., Wijayathunga V.N., Broom N.D. & Wilcox R.K. (accepted 2015)
 "Derivation of inter-lamellar behaviour of the intervertebral disc annulus." Journal of the Mechanical Behavior of Biomedical Materials
