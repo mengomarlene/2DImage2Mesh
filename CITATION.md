@@ -19,7 +19,7 @@ Mengoni M.: "2DImage2Mesh, a python code to generate quadrangular meshes on imag
     year =    {2015}
 }
 
-@online{opti4Abq_github,
+@online{2DImage2Mesh_github,
   Title  = {2DImage2Mesh, a python code to generate quadrangular meshes on images},
   Author = {Mengoni, M.},
   Date = {2015-03-25},
