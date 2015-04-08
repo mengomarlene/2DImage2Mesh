@@ -4,7 +4,8 @@ Mengoni M., Luxmoore B.J., Jones A.C., Wijayathunga V.N., Broom N.D. & Wilcox R.
 "Derivation of inter-lamellar behaviour of the intervertebral disc annulus." Journal of the Mechanical Behavior of Biomedical Materials
 
 Mengoni M.: "2DImage2Mesh, a python code to generate quadrangular meshes on images". 
-[![DOI](https://zenodo.org/badge/10566/mengomarlene/2DImage2Mesh.svg)](http://dx.doi.org/10.5281/zenodo.16327)
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.16660.svg)](http://dx.doi.org/10.5281/zenodo.16660)
+
 
 
 
@@ -22,8 +23,8 @@ Mengoni M.: "2DImage2Mesh, a python code to generate quadrangular meshes on imag
 @online{2DImage2Mesh_github,
   Title  = {2DImage2Mesh, a python code to generate quadrangular meshes on images},
   Author = {Mengoni, M.},
-  Date = {2015-03-25},
-  Doi = {http://dx.doi.org/10.5281/zenodo.16327},
-  Version = {0.1}
+  Date = {2015-04-07},
+  Doi = {http://dx.doi.org/10.5281/zenodo.16660},
+  Version = {0.2}
 }
 ```
