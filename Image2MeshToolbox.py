@@ -44,7 +44,7 @@ def addPartsToAssembly(model):
     ## add new parts to assembly - only after the initial instance has been deleted has they are not of the same type
     for part in model.parts.values():
        myInstaneName = part.name.split('_')[0]+'_instance'
-       myAssembly.Instance(myInstaneName, part, dependent=ON)
+       model.rootAssembly.Instance(myInstaneName, part, dependent=ON)
 #-----------------------------------------------------
 def deleteOldFeatures(model):
     # delete old part,instance,sections,...

@@ -32,7 +32,7 @@ def shellTo2DGeo(myModel,seedSize=0.5,elementType='CPS'):
 
     ## ELEMENT INTEGRATION (2D elements: CPE=plane strain, CPS=plane stress)
     # defines abaqus elements - hourglass controlled standard quadrangles (abaqus asks for the definition of the triangular elements even if they a not used!!)
-    if elementType=:'CPS':
+    if elementType=='CPS':
         elemType1 = mesh.ElemType(elemCode=CPS4R, elemLibrary=STANDARD, hourglassControl=ENHANCED)
         elemType2 = mesh.ElemType(elemCode=CPS3, elemLibrary=STANDARD)
     else:
